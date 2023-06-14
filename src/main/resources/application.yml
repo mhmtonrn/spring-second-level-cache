@@ -1,0 +1,31 @@
+server:
+
+spring:
+  application:
+    name: redis-second-level-cache
+  cache:
+    type: REDIS
+  datasource:
+    url:
+    jdbc-url:
+    username: monar
+    password: Monar123.
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: true
+          region:
+            factory_class: org.redisson.hibernate.RedissonRegionFactory
+          region_prefix: SECOND_LEVEL_CACHE
+          key_delimiter: "::"
+#          redisson:
+#            config: redisson.yaml
+        jdbc:
+          time_zone: UTC
+        ddl-auto: create
+        show_sql: true
+#  redis:
+#    host: redisdev.mhrs.gov.tr
+#    port: 6379
